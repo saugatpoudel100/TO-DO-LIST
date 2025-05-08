@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f6ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .signup-login {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+        }
+        .signup-box {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        .heading {
+            font-size: 26px;
+            font-weight: bold;
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        .line {
+            height: 3px;
+            background: #4a90e2;
+            margin: 10px 0 20px 0;
+        }
+        .field {
+            margin-bottom: 20px;
+        }
+        .field b {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        .inp {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+        .inp:focus {
+            border-color: #4a90e2;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .submit-btn:hover {
+            background: #357ab8;
+        }
+        .field p {
+            display: inline;
+            margin-right: 5px;
+            color: #555;
+        }
+        .anc {
+            color: #4a90e2;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .anc:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-login">
+        <div class="signup-box">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="heading">Sign Up</div>
+                <div class="line"></div>
+                <div class="field">
+                    <b>Username</b>
+                    <input type="text" class="inp" name="fnm" placeholder="Enter your username" required>
+                </div>
+                <div class="field">
+                    <b>Email</b>
+                    <input type="email" class="inp" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="field">
+                    <b>Password</b>
+                    <input type="password" class="inp" name="pwd" placeholder="Enter your password" required>
+                </div>
+                <div class="field">
+                    <input type="submit" value="Sign Up" class="submit-btn">
+                </div>
+            </form>
+            <div class="field">
+                <p>Already have an account?</p>
+                <a class="anc" href="/loginn">Log in</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .signup-login {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+        }
+        .signup-box {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .heading {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .line {
+            height: 2px;
+            background: #007bff;
+            margin: 10px 0 20px 0;
+        }
+        .field {
+            margin-bottom: 20px;
+        }
+        .field b {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .inp {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background: #0056b3;
+        }
+        .anc {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .anc:hover {
+            text-decoration: underline;
+        }
+        .field p {
+            margin: 0;
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-login">
+        <div class="signup-box">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="heading">Login</div>
+                <div class="line"></div>
+                <div class="field">
+                    <b>Username</b>
+                    <input type="text" class="inp" name="fnm" placeholder="Enter your username" required>
+                </div>
+                <div class="field">
+                    <b>Password</b>
+                    <input type="password" class="inp" name="pwd" placeholder="Enter your password" required>
+                </div>
+                <div class="field">
+                    <input type="submit" value="LOG  IN" class="submit-btn">
+                </div>
+            </form>
+            <div class="field">
+                <p>Don't have an account?</p>
+                <a class="anc" href="/signup"> Sign up</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

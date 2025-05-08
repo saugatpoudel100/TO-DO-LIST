@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .signup-login {
+            width: 100%;
+            max-width: 500px;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        .signup-box {
+            padding: 30px;
+            text-align: center;
+        }
+        .heading {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .inp {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .submit-btn:hover {
+            background: #45a049;
+        }
+        .todo {
+            background-color: #eee;
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 10px;
+            text-align: left;
+        }
+        .todo-actions {
+            margin-top: 8px;
+        }
+        .todo-actions a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-login">
+        <div><h2>Hello {{ user.username }}</h2></div>
+
+        <div class="signup-box">
+            <div class="heading">GET Things Done</div>
+            
+            <form method="POST">
+                {% csrf_token %}
+                <input type="text" class="inp" name="title" placeholder="Update today's task?" value="{{obj.title}}" required>
+                <input type="submit" class="submit-btn" value="Update Task">
+            </form>
+
+            {% for home in res %}
+            <div class="todo">
+                <h5>{{ home.srno }}</h5>
+                <p>{{ home.title }}</p>
+                <div class="todo-actions">
+                    <a href="">Edit</a>
+                    <a href="">Delete</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
