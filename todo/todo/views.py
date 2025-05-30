@@ -4,6 +4,7 @@ from todo import models
 from todo.models import TODOO
 from django.contrib.auth import authenticate, login,logout
 
+#function
 
 def signup(request):
     if request.method == 'POST':
