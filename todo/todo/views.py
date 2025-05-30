@@ -5,6 +5,7 @@ from todo.models import TODOO
 from django.contrib.auth import authenticate, login,logout
 
 #function
+#signup
 
 def signup(request):
     if request.method == 'POST':
@@ -18,7 +19,7 @@ def signup(request):
         return redirect('/login')
     return render(request, 'signup.html')
 
-
+#login
 def loginn(request):
     if request.method == 'POST':
         fnm=request.POST.get('fnm')
@@ -32,7 +33,7 @@ def loginn(request):
             return redirect('/home')
     return render(request, 'loginn.html')
 
-
+#home
 def home(request):
      if request.method == 'POST':
         title = request.POST.get('title')
@@ -44,7 +45,7 @@ def home(request):
      res=models.TODOO.objects.filter(user=request.user).order_by('-date')
      return render(request, 'home.html',{'res': res})
 
-
+#edit
 def edit_todo(request,srno):
      if request.method == 'POST':
         title = request.POST.get('title')
@@ -61,13 +62,13 @@ def edit_todo(request,srno):
     
      return render(request, 'home.html')
 
-
+#delete
 def delete_todo(request,srno):
     obj =models.TODOO.objects.get(srno=srno)
     obj.delete()
     return redirect('/home')  
 
-
+#signout
 def signout(request):
     logout(request)
     return redirect('/loginn')
